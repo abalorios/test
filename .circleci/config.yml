@@ -1,21 +1,21 @@
 version: 2.1
 jobs:
 
-  erlang-medium_j2:
+  erlang-large_j4:
     machine:
       image: ubuntu-2004:current
-      resource_class: medium
+      resource_class: large
     steps:
       - checkout
       - run:
-          name: circle-medium_j2
+          name: circle-large_j4
           environment:
-            a_type: circle-medium_j2
+            a_type: circle-large_j4
           command: |
             bash benchmarks/erlang_setup.sh
-            make bench J="2" AGENT_TYPE="$a_type" BENCHMARK_NAME="erlang" BENCH=benchmarks/ubuntu_erlang.sh
+            make bench J="4" AGENT_TYPE="$a_type" BENCHMARK_NAME="erlang" BENCH=benchmarks/ubuntu_erlang.sh
 
 workflows:
   medium:
     jobs:
-      - erlang-medium_j2
+      - erlang-large_j4
