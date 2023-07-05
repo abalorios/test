@@ -16,6 +16,6 @@ jobs:
             make bench J="4" AGENT_TYPE="$a_type" BENCHMARK_NAME="erlang" BENCH=benchmarks/ubuntu_erlang.sh
 
 workflows:
-  medium:
+  large:
     jobs:
       - erlang-large_j4
