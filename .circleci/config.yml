@@ -1,21 +1,21 @@
 version: 2.1
 jobs:
 
-  erlang-large_j2:
+  erlang-large_j4:
     docker:
       - image: cimg/base:current
-    resource_class: medium
+    resource_class: large
     steps:
       - checkout
       - run:
-          name: circle-docker-medium_j2
+          name: circle-docker-medium_j4
           environment:
-            a_type: circle-docker-medium_j2
+            a_type: circle-docker-medium_j4
           command: |
             bash benchmarks/erlang_setup.sh
-            make bench J="2" AGENT_TYPE="$a_type" BENCHMARK_NAME="erlang" BENCH=benchmarks/ubuntu_erlang.sh
+            make bench J="4" AGENT_TYPE="$a_type" BENCHMARK_NAME="erlang" BENCH=benchmarks/ubuntu_erlang.sh
 
 workflows:
   large:
     jobs:
-      - erlang-large_j2
+      - erlang-large_j4
